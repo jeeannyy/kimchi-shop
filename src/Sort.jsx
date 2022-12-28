@@ -1,9 +1,8 @@
-import data from './data.js';
 
 function Sort(props){
     return(
         <button onClick = {() => {
-            let byTitle = [...data].slice(0);
+            let byTitle = [...props.shoes].slice(0);
 
             byTitle.sort(function(a,b) {
             let x = a.title.toLowerCase();
@@ -13,6 +12,7 @@ function Sort(props){
             props.setShoes(byTitle));
         }}>Sort</button>
     )   
+
 }
 
 export default Sort;
