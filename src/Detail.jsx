@@ -2,6 +2,8 @@
 
 import React, {useState, useEffect} from 'react';
 import { useParams } from 'react-router-dom';
+import { Nav } from 'react-bootstrap';
+
 
 
 function Detail(props){
@@ -9,12 +11,10 @@ function Detail(props){
     let [adBar, setAdBar] = useState(true);
 
     let [amount, setAmount] = useState("");
+    const [tab, setTab] = useState(0);
 
-    // let findItem = props.shoes.find(function(shoe){return shoe.id == itemId});
-    let findItem = props.shoes.find((shoe) => {shoe.id == itemId});
-    console.log(findItem, "f");
-    // Q) findItem 계속 undefined 나옴
-
+    let findItem = props.shoes.find((shoe) => {return shoe.id == itemId});
+    console.log(findItem, "fd");
     
 
     useEffect(()=>{
@@ -28,30 +28,54 @@ function Detail(props){
     return(
         <>
             {
-                adBar === true ? <div className='adBar'>2초 안에 사면 할인</div> : null
+                adBar === true ? <div className='adBar transition-start transition-end'>2초 안에 사면 할인</div> : null
             }
             <div className="container">
 
                     <div className="row">
                       <div className="col-md-6">
-                        {/* <img src={`https://codingapple1.github.io/shop/shoes${props.shoes[id].id+1}.jpg`} width="100%" /> */}
-                        {/* <img src={`https://codingapple1.github.io/shop/shoes${findItem.id}.jpg`} width="100%" /> */}
-                        {/* <img src={`https://codingapple1.github.io/shop/shoes1.jpg`} width="100%" /> */}
-                        <img src={`https://codingapple1.github.io/shop/shoes${props.shoes[itemId].id+1}.jpg`} width="100%" />
-                      </div>
+                        <img src={`https://codingapple1.github.io/shop/shoes${findItem.id+1}.jpg`} width="100%" />
+                         </div>
                    
-                      <input onChange={(e) => {setAmount(e.target.value)}}/>
 
                       <div className="col-md-6 mt-4">
-                        <h4 className="pt-5">{props.shoes[itemId].title}</h4>
-                        <p>{props.shoes[itemId].content}</p>
-                        <p>£{props.shoes[itemId].price}</p>
+                        <h4 className="pt-5">{findItem.title}</h4>
+                        <p>{findItem.content}</p>
+                        <p>£{findItem.price}</p>
                         <p><input type="number" /></p>
 
                         <button className="btn btn-danger">Order</button> 
                       </div>
                     </div>
             </div> 
+
+
+            <Nav variant="tabs" defaultActiveKey="link0">
+                <Nav.Item>
+                    <Nav.Link eventKey="link0" onClick={() => {
+                        setTab(0);
+                    }}>버튼0</Nav.Link>
+                </Nav.Item>
+                <Nav.Item>
+                    <Nav.Link eventKey="link1" onClick={() => {setTab(1)}}>버튼 1</Nav.Link>
+                </Nav.Item>
+                <Nav.Item>
+                    <Nav.Link eventKey="link2" onClick={() => {setTab(2)}}>버튼 2</Nav.Link>
+                </Nav.Item>
+            </Nav>
+           
+           {
+            tab === 0 ? <div>내용0</div> :  
+            tab === 1 ? <div>내용1</div> :
+            tab === 2 ? <div>내용2</div> : null
+            }
+           
+         
+
+
+
+
+
             </>
         )
         }

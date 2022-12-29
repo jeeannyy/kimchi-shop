@@ -35,7 +35,11 @@ li{
   
 }
 
-/* .cardImg{
-  width: 150px;
-  height: 150px;
-} */
+.transition-start {
+  opacity: 0;
+}
+
+.transition-end {
+  opacity: 1;
+  transition: opacity 0.3s ease-in-out;
+}
