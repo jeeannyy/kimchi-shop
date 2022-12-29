@@ -11,8 +11,8 @@ function Detail(props){
     let [amount, setAmount] = useState("");
 
     // let findItem = props.shoes.find(function(shoe){return shoe.id == itemId});
-    // let findItem = props.shoes.find((shoe) => {shoe.id === itemId});
-    // console.log(findItem, "ffffff");
+    let findItem = props.shoes.find((shoe) => {shoe.id == itemId});
+    console.log(findItem, "f");
     // Q) findItem 계속 undefined 나옴
 
     
@@ -41,7 +41,7 @@ function Detail(props){
                       </div>
                    
                       <input onChange={(e) => {setAmount(e.target.value)}}/>
-                      
+
                       <div className="col-md-6 mt-4">
                         <h4 className="pt-5">{props.shoes[itemId].title}</h4>
                         <p>{props.shoes[itemId].content}</p>
