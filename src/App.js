@@ -7,7 +7,8 @@ import data from './data.js';
 import { Routes, Route, Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
-import Detail from './Detail';
+import Detail from './routes/Detail';
+import Cart from './routes/Cart';
 import Sort from './Sort';
 
 function Card(props){
@@ -23,8 +24,10 @@ function Card(props){
 
 function App() {
   const [shoes, setShoes] = useState(data);
+  const [stocks, setStocks] = useState([5, 10, 20]);
   const [moreClick, setMoreClick] = useState(2);
   const [loading, setLoading] = useState(true);
+
 
   useEffect(() => {
     moreClick > 4 ? alert('No more items') : null;
@@ -42,6 +45,7 @@ function App() {
           <Nav className="me-auto">
             <Link className="navLink" to={"/"}>Home</Link>
             <Link className="navLink" to={`/detail/0`}>Detail</Link>
+            <Link className="navLink" to={`/cart`}>Cart</Link>
           </Nav>
         </Container>
       </Navbar>
@@ -77,6 +81,7 @@ function App() {
         } />
         
         <Route path="/detail/:itemId" element={<Detail shoes={shoes} setShoes={setShoes}/>} />
+        <Route path='/cart' element={<Cart />}></Route>
       </Routes>
     
     </div>

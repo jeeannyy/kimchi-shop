@@ -50,7 +50,7 @@ function Detail(props){
             </div> 
 
 
-            <Nav variant="tabs" defaultActiveKey="link0">
+            <Nav variant="tabs" defaultActiveKey="link0" className='detailNav'>
                 <Nav.Item>
                     <Nav.Link eventKey="link0" onClick={() => {
                         setTab(0);
@@ -64,12 +64,13 @@ function Detail(props){
                 </Nav.Item>
             </Nav>
            
+           <div className='detailContent'>
            {
             tab === 0 ? <div>내용0</div> :  
             tab === 1 ? <div>내용1</div> :
             tab === 2 ? <div>내용2</div> : null
             }
-           
+            </div>
          
 
 

@@ -43,3 +43,13 @@ li{
   opacity: 1;
   transition: opacity 0.3s ease-in-out;
 }
+
+.detailNav{
+  margin-top: 30px;
+  margin-left: 20px;
+}
+
+.detailContent{
+  margin-top: 10px;
+  margin-left: 35px;
+}
