@@ -3,10 +3,14 @@
 import React, {useState, useEffect} from 'react';
 import { useParams } from 'react-router-dom';
 import { Nav } from 'react-bootstrap';
+import { useDispatch, useSelector } from 'react-redux';
+import { addItem } from '.././store/userSlice';
+
 
 
 
 function Detail(props){
+    
     let {itemId} = useParams();
     let [adBar, setAdBar] = useState(true);
 
@@ -16,6 +20,10 @@ function Detail(props){
     let findItem = props.shoes.find((shoe) => {return shoe.id == itemId});
     console.log(findItem, "fd");
     
+    let state = useSelector((state) => state);
+    let dispatch = useDispatch()
+
+    console.log(state, "<<");
 
     useEffect(()=>{
         setTimeout(()=>{ setAdBar(false) }, 2000)
@@ -42,13 +50,10 @@ function Detail(props){
                         <h4 className="pt-5">{findItem.title}</h4>
                         <p>{findItem.content}</p>
                         <p>£{findItem.price}</p>
-                        <p><input type="number" /></p>
-
-                        <button className="btn btn-danger">Order</button> 
+                        <button className="btn btn-danger" onClick={() => {dispatch(addItem( { id: findItem.id, name: findItem.title, count: 1}))}}>Order</button> 
                       </div>
                     </div>
             </div> 
-
 
             <Nav variant="tabs" defaultActiveKey="link0" className='detailNav'>
                 <Nav.Item>
