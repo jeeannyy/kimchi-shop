@@ -1,9 +1,11 @@
 import { Table } from 'react-bootstrap'; 
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { increaseCount, decreaseCount } from '.././store/userSlice';
 
 function Cart(){
 
-let state = useSelector((state) => {return state});
+let state = useSelector((state) => state);
+let dispatch = useDispatch()
 
     return(
         <Table striped bordered hover>
@@ -16,18 +18,25 @@ let state = useSelector((state) => {return state});
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <td>{state.cart[0].id+1}</td>
-          <td>{state.cart[0].name}</td>
-          <td>{state.cart[0].count}</td>
-          <td>@jeeanny</td>
-        </tr>
-        <tr>
-          <td>{state.cart[1].id+1}</td>
-          <td>{state.cart[1].name}</td>
-          <td>{state.cart[1].count}</td>
-          <td>@jeeanny</td>
-        </tr>
+        {
+            state.cart.map((item, id) => {
+                return(
+                    <tr>
+                    <td>{state.cart[id].id + 1}</td>
+                    <td>{state.cart[id].name}</td>
+                    <td>{state.cart[id].count}</td>
+                    <td><button className="countBtn"  onClick={() => {
+                        state.cart(item => item.id === id ? item.count + 1 : null);
+                        dispatch(increaseCount())
+                    }}>+</button>
+                    <button onClick={() => {
+                        dispatch(decreaseCount())
+                    }}>-</button>
+                    </td>
+                    </tr>
+                )
+            })
+        }
       </tbody>
     </Table>
     )
