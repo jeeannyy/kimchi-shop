@@ -24,7 +24,6 @@ function Card(props){
 
 function App() {
   const [shoes, setShoes] = useState(data);
-  const [stocks, setStocks] = useState([5, 10, 20]);
   const [moreClick, setMoreClick] = useState(2);
   const [loading, setLoading] = useState(true);
 
@@ -53,7 +52,6 @@ function App() {
 
       <Routes>
         <Route path="/" element={<>
-
           <div className='main-bg'></div>
           <Sort shoes={shoes} setShoes={setShoes}/>
           <div className='container'>
@@ -77,13 +75,12 @@ function App() {
               setLoading(false);
             })
           }}>more</button>
+
         </>
         } />
-        
         <Route path="/detail/:itemId" element={<Detail shoes={shoes} setShoes={setShoes}/>} />
         <Route path='/cart' element={<Cart />}></Route>
       </Routes>
-    
     </div>
   );
 }

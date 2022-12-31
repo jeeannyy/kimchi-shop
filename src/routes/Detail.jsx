@@ -2,10 +2,10 @@
 
 import React, {useState, useEffect} from 'react';
 import { useParams } from 'react-router-dom';
-import { Nav } from 'react-bootstrap';
+import { Nav, Card } from 'react-bootstrap';
+import ListGroup from 'react-bootstrap/ListGroup';
 import { useDispatch, useSelector } from 'react-redux';
 import { addItem } from '.././store/userSlice';
-
 
 
 
@@ -16,14 +16,22 @@ function Detail(props){
 
     let [amount, setAmount] = useState("");
     const [tab, setTab] = useState(0);
-
-    let findItem = props.shoes.find((shoe) => {return shoe.id == itemId});
-    console.log(findItem, "fd");
-    
+    let findItem = props.shoes.find((shoe) => {return shoe.id == itemId});    
     let state = useSelector((state) => state);
-    let dispatch = useDispatch()
+    let dispatch = useDispatch();
+    const [recentView, setRecentView] = useState([]);
 
-    console.log(state, "<<");
+    // useEffect(() =>{
+    //     let save = localStorage.setItem(findItem.id, findItem.title);
+    //     save = JSON.stringify(save);
+    //     save.push(findItem.title);
+    //     localStorage.setItem('findItem.id', JSON.stringify(save));
+    // },[])
+
+    console.log(localStorage, "storage")
+
+    console.log(recentView, "<<<");
+
 
     useEffect(()=>{
         setTimeout(()=>{ setAdBar(false) }, 2000)
@@ -39,13 +47,21 @@ function Detail(props){
                 adBar === true ? <div className='adBar transition-start transition-end'>2초 안에 사면 할인</div> : null
             }
             <div className="container">
-
                     <div className="row">
                       <div className="col-md-6">
                         <img src={`https://codingapple1.github.io/shop/shoes${findItem.id+1}.jpg`} width="100%" />
                          </div>
                    
+                         <div className="recentItem">
+                                    <Card>
+                                        <Card.Header>최근 본 상품</Card.Header>
+                                        <ListGroup variant="flush">
+                                            <ListGroup.Item >{recentView}</ListGroup.Item>
 
+                                        </ListGroup>
+                                    </Card>
+        
+            </div>
                       <div className="col-md-6 mt-4">
                         <h4 className="pt-5">{findItem.title}</h4>
                         <p>{findItem.content}</p>
