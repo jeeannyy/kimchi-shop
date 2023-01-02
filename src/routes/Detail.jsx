@@ -51,7 +51,7 @@ function Detail(props){
                       <div className="col-md-6">
                         <img src={`https://codingapple1.github.io/shop/shoes${findItem.id+1}.jpg`} width="100%" />
                          </div>
-                   
+{/*                    
                          <div className="recentItem">
                                     <Card>
                                         <Card.Header>최근 본 상품</Card.Header>
@@ -61,7 +61,7 @@ function Detail(props){
                                         </ListGroup>
                                     </Card>
         
-            </div>
+            </div> */}
                       <div className="col-md-6 mt-4">
                         <h4 className="pt-5">{findItem.title}</h4>
                         <p>{findItem.content}</p>
