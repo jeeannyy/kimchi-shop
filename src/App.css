@@ -1,6 +1,6 @@
 .main-bg{
   height: 950px;
-  background-image: url(../src/img/main.jpeg);
+  background-image: url(../public/img/main.jpeg);
   background-size: cover;
   background-position: center;
 }

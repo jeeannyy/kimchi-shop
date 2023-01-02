@@ -40,7 +40,7 @@ function App() {
     <div className="App">
       <Navbar bg="success" variant="dark">
         <Container>
-          <Navbar.Brand href="#kimchi">Kimchi</Navbar.Brand>
+          <Navbar.Brand href="/">Kimchi</Navbar.Brand>
           <Nav className="me-auto">
             <Link className="navLink" to={"/"}>Home</Link>
             <Link className="navLink" to={`/detail/0`}>Detail</Link>
@@ -51,6 +51,7 @@ function App() {
   
 
       <Routes>
+      {/* <Route path="/kimchi-shop" element={<Home />} /> */}
         <Route path="/" element={<>
           <div className='main-bg'></div>
           <Sort shoes={shoes} setShoes={setShoes}/>
