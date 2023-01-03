@@ -77,9 +77,6 @@ text-align: center;
   height: 400px;
 }
 
-/* button{
-  text-align: center;
-} */
 
 .moreBtn{
   padding: 10px 30px 10px 30px;
@@ -87,12 +84,12 @@ text-align: center;
   justify-content: center;
   margin: auto;
   width: 20%;
-  margin-bottom: 30px;
   text-align: center;
   font-size: 20px;
-  background-color: rgb(88, 210, 117);
-  font-weight: 500;
+  background-color: rgba(139, 212, 156, 0.922);
   border: 1px solid rgb(59, 59, 59);
+  margin-top: 30px;
+  margin-bottom: 50px;
 }
 
 .main-container{
@@ -109,4 +106,12 @@ text-align: center;
   font-weight: 500;
   line-height: 70px;
   font-family: Kanit;
+}
+
+.sortBtn{
+  padding: 10px 18px 10px 18px;
+ 
+  margin: 30px 0 30px 0;
+ 
+  font-size: 20px;
 }

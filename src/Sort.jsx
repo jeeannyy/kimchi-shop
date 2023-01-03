@@ -1,7 +1,7 @@
 
 function Sort(props){
     return(
-        <button onClick = {() => {
+        <button className='sortBtn'  onClick = {() => {
             let byTitle = [...props.shoes].slice(0);
 
             byTitle.sort(function(a,b) {
@@ -10,7 +10,7 @@ function Sort(props){
             return x < y ? -1 : x > y ? 1 : 0;
             },
             props.setShoes(byTitle));
-        }}>Sort</button>
+        }}>A - Z</button>
     )   
 
 }

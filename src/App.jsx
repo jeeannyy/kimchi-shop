@@ -60,8 +60,9 @@ function App() {
           <div className='bg-text'><p>Korea's Kimchi,</p><p>It's for Everyone</p></div>
         </div>
         
-          <Sort shoes={shoes} setShoes={setShoes}/>
           <div className='container'>
+          <Sort shoes={shoes} setShoes={setShoes}/>
+
             <div className='row'>
           { shoes.map((shoe, index) => {
               return <Card shoes={shoes[index]} key={index} id={shoes[index].id+1}/>
