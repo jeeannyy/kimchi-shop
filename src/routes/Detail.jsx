@@ -34,7 +34,7 @@ function Detail(props){
 
 
     useEffect(()=>{
-        setTimeout(()=>{ setAdBar(false) }, 2000)
+        setTimeout(()=>{ setAdBar(false) }, 3000)
       }, [])
 
       useEffect(() => {
@@ -44,12 +44,14 @@ function Detail(props){
     return(
         <>
             {
-                adBar === true ? <div className='adBar transition-start transition-end'>2초 안에 사면 할인</div> : null
+                adBar === true ? <div className='adBar transition-start transition-end'>If you buy in 3 seconds, you can get discount</div> : null
             }
             <div className="container">
                     <div className="row">
                       <div className="col-md-6">
-                        <img src={`https://codingapple1.github.io/shop/shoes${findItem.id+1}.jpg`} width="100%" />
+                        {/* <img src={`https://codingapple1.github.io/shop/shoes${findItem.id+1}.jpg`} width="100%" /> */}
+                        <img src={`https://github.com/jeeannyy/kimchi-shop/blob/main/public/img/kimchi0.png?raw=true`} className="cardImg"/>
+
                          </div>
 {/*                    
                          <div className="recentItem">
@@ -75,21 +77,25 @@ function Detail(props){
                 <Nav.Item>
                     <Nav.Link eventKey="link0" onClick={() => {
                         setTab(0);
-                    }}>버튼0</Nav.Link>
+                    }}>How to Store</Nav.Link>
                 </Nav.Item>
                 <Nav.Item>
-                    <Nav.Link eventKey="link1" onClick={() => {setTab(1)}}>버튼 1</Nav.Link>
+                    <Nav.Link eventKey="link1" onClick={() => {setTab(1)}}>Health Benefit</Nav.Link>
                 </Nav.Item>
                 <Nav.Item>
-                    <Nav.Link eventKey="link2" onClick={() => {setTab(2)}}>버튼 2</Nav.Link>
+                    <Nav.Link eventKey="link2" onClick={() => {setTab(2)}}>Score</Nav.Link>
+                </Nav.Item>
+                <Nav.Item>
+                    <Nav.Link eventKey="link3" onClick={() => {setTab(3)}}>Place of production</Nav.Link>
                 </Nav.Item>
             </Nav>
            
            <div className='detailContent'>
            {
-            tab === 0 ? <div>내용0</div> :  
-            tab === 1 ? <div>내용1</div> :
-            tab === 2 ? <div>내용2</div> : null
+            tab === 0 ? <div>In the refrigerator, it stays fresh much longer(about 3~6 months) and continues to ferment, which may lead to a sourer taste. Be sure to refrigerate your kimchi at or below 39°F (4°C), as warmer temperatures may accelerate spoilage.</div> :  
+            tab === 1 ? <div>Vitamin A for Heart Health, Vitamin C for Immune Health, Vitamin K, Folate, Beta-carotene, Choline, Potassium, Calcium, Gut-Friendly Bacteria</div> :
+            tab === 2 ? <div>⭐️⭐️⭐️⭐️⭐️ (10/10)</div> :
+            tab === 3 ? <div>Made in South Korea</div> : null
             }
             </div>
          

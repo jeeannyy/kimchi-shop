@@ -57,7 +57,7 @@ function App() {
         <Route path="/" element={<>
         <div className='main-container'>
         <div className='main-bg'></div>
-          <div className='bg-text'><p>Korea's Kimchi,</p><p>It's for Everyone</p></div>
+          <div className='bg-text'><p>Korea's Kimchi,</p><p>Absolutely Korgeous</p></div>
         </div>
         
           <div className='container'>
@@ -65,13 +65,14 @@ function App() {
 
             <div className='row'>
           { shoes.map((shoe, index) => {
-              return <Card shoes={shoes[index]} key={index} id={shoes[index].id+1}/>
+              return <Card shoes={shoes[index]} key={index} id={shoes[index].id}/>
               })}
               </div>
           </div>
           <button className="moreBtn" onClick={() => {
             setMoreClick(moreClick + 1);
-            axios.get(`https://codingapple1.github.io/shop/data${moreClick}.json`)
+            // axios.get(`https://codingapple1.github.io/shop/data${moreClick}.json`)
+            axios.get(`https://raw.githubusercontent.com/jeeannyy/kimchi-shop/main/src/data${moreClick}.json`)
             .then((result) => {
               let copy = [...shoes, ...result.data];
               // copy.concat(result.data);
