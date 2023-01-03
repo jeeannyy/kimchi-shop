@@ -41,47 +41,47 @@ let data = [
       price : 30
     },
 
-    {
-      id : 6,
-      title : "Musaengchae",
-      content : "Shredded white radish",
-      price : 30
-    },
+    // {
+    //   id : 6,
+    //   title : "Musaengchae",
+    //   content : "Shredded white radish",
+    //   price : 30
+    // },
 
-    {
-      id : 7,
-      title : "Baek kimchi",
-      content : "White Cabbage Kimchi",
-      price : 30
-    },
+    // {
+    //   id : 7,
+    //   title : "Baek kimchi",
+    //   content : "White Cabbage Kimchi",
+    //   price : 30
+    // },
 
-    {
-      id : 8,
-      title : "Seasoned Sweet Potato Stalks kimchi",
-      content : "Gogumasun kimchi",
-      price : 30
-    },
+    // {
+    //   id : 8,
+    //   title : "Seasoned Sweet Potato Stalks kimchi",
+    //   content : "Gogumasun kimchi",
+    //   price : 30
+    // },
 
-    {
-      id : 9,
-      title : "Leek kimchi",
-      content : "Buchu kimchi",
-      price : 30
-    },
+    // {
+    //   id : 9,
+    //   title : "Leek kimchi",
+    //   content : "Buchu kimchi",
+    //   price : 30
+    // },
 
-    {
-      id : 10,
-      title : "Oisobagi",
-      content : "Cucumber pickles",
-      price : 30
-    },
+    // {
+    //   id : 10,
+    //   title : "Oisobagi",
+    //   content : "Cucumber pickles",
+    //   price : 30
+    // },
 
-    {
-      id : 11,
-      title : "Young radish kimchi",
-      content : "Chonggak kimchi",
-      price : 30
-    }
+    // {
+    //   id : 11,
+    //   title : "Young radish kimchi",
+    //   content : "Chonggak kimchi",
+    //   price : 30
+    // }
   ] 
 
   export default data;

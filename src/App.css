@@ -14,7 +14,7 @@
 
 
 .colImg{
-  width: 80%
+  width: 80%;
 }
 
 li{
@@ -65,4 +65,48 @@ width: 300px;
 display: flex;
 justify-content: flex-end;
 text-align: center;
+}
+
+.cardImg{
+  padding-bottom: 10px;
+  margin-bottom: 20px;
+}
+
+.cardImg img{
+  width: 400px;
+  height: 400px;
+}
+
+/* button{
+  text-align: center;
+} */
+
+.moreBtn{
+  padding: 10px 30px 10px 30px;
+  display: flex;
+  justify-content: center;
+  margin: auto;
+  width: 20%;
+  margin-bottom: 30px;
+  text-align: center;
+  font-size: 20px;
+  background-color: rgb(88, 210, 117);
+  font-weight: 500;
+  border: 1px solid rgb(59, 59, 59);
+}
+
+.main-container{
+  position: relative;
+  text-align: center;
+  color: white;
+}
+
+.bg-text{
+  position: absolute;
+  top: 320px;
+  left: 150px;
+  font-size: 75px;
+  font-weight: 500;
+  line-height: 70px;
+  font-family: Kanit;
 }

@@ -14,7 +14,9 @@ import Sort from './Sort';
 function Card(props){
   return(
          <div className='col-md-4 cardImg'>
-          <img src={`https://codingapple1.github.io/shop/shoes${props.id}.jpg`}/>
+          {/* <img src={`https://codingapple1.github.io/shop/shoes${props.id}.jpg`}/> */}
+          <img src={`https://github.com/jeeannyy/kimchi-shop/blob/main/public/img/kimchi${props.id}.png?raw=true`} className="cardImg"/>
+
           <h4>{props.shoes.title}</h4>
           <p>{props.shoes.content}</p>
         </div>
@@ -53,7 +55,11 @@ function App() {
       <Routes>
       {/* <Route path="/kimchi-shop" element={<Home />} /> */}
         <Route path="/" element={<>
-          <div className='main-bg'></div>
+        <div className='main-container'>
+        <div className='main-bg'></div>
+          <div className='bg-text'><p>Korea's Kimchi,</p><p>It's for Everyone</p></div>
+        </div>
+        
           <Sort shoes={shoes} setShoes={setShoes}/>
           <div className='container'>
             <div className='row'>
@@ -62,7 +68,7 @@ function App() {
               })}
               </div>
           </div>
-          <button onClick={() => {
+          <button className="moreBtn" onClick={() => {
             setMoreClick(moreClick + 1);
             axios.get(`https://codingapple1.github.io/shop/data${moreClick}.json`)
             .then((result) => {
