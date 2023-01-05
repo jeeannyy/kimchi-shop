@@ -42,9 +42,9 @@ function App() {
     <div className="App">
       <Navbar bg="success" variant="dark">
         <Container>
-          <Navbar.Brand href="/">Kimchi</Navbar.Brand>
+          <Navbar.Brand href="/kimchi-shop">Kimchi</Navbar.Brand>
           <Nav className="me-auto">
-            <Link className="navLink" to={"/"}>Home</Link>
+            <Link className="navLink" to={"/kimchi-shop"}>Home</Link>
             <Link className="navLink" to={`/detail/0`}>Detail</Link>
             <Link className="navLink" to={`/cart`}>Cart</Link>
           </Nav>
@@ -53,8 +53,7 @@ function App() {
   
 
       <Routes>
-      {/* <Route path="/kimchi-shop" element={<Home />} /> */}
-        <Route path="/" element={<>
+        <Route path="/kimchi-shop" element={<>
         <div className='main-container'>
         <div className='main-bg'></div>
           <div className='bg-text'><p>Korea's Kimchi,</p><p>Absolutely Korgeous</p></div>

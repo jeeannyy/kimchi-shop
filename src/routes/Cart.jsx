@@ -1,7 +1,8 @@
 import { Table } from 'react-bootstrap'; 
 import { useDispatch, useSelector } from 'react-redux';
 import { increaseCount, decreaseCount, deleteItem, addPrice, deductPrice } from '.././store/userSlice';
-import { useState } from 'react';
+import { useState } from 'react'
+
 
 function Cart(){
 
@@ -63,7 +64,10 @@ const [total, setTotal] = useState(90);
             <div className='total'>
             <span>{`Sub-total: £${total} `}</span>
             <button>Order</button>
+           
+
             </div>
+          
 </>
     )
 }
