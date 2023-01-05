@@ -102,11 +102,11 @@ text-align: center;
 
 .bg-text{
   position: absolute;
-  top: 320px;
-  left: 150px;
-  font-size: 75px;
+  top: 280px;
+  left: 110px;
+  font-size: 70px;
   font-weight: 500;
-  line-height: 70px;
+  line-height: 75px;
   font-family: Kanit;
 }
 
@@ -120,4 +120,19 @@ text-align: center;
 
 .col-md-6{
   margin-top: 50px;
+}
+
+
+.cart-table{
+font-size: 17px;
+}
+
+.cartImg{
+  width: 200px;
+  height: 200px;
+  margin-right: 30px;
+}
+
+.product-name{
+  width: 40%
 }

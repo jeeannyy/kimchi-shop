@@ -1,19 +1,30 @@
 import { Table } from 'react-bootstrap'; 
 import { useDispatch, useSelector } from 'react-redux';
-import { increaseCount, decreaseCount, deleteItem } from '.././store/userSlice';
+import { increaseCount, decreaseCount, deleteItem, addPrice, deductPrice } from '.././store/userSlice';
+import { useState } from 'react';
 
 function Cart(){
 
 let state = useSelector((state) => state);
 let dispatch = useDispatch()
+const [total, setTotal] = useState(90);
+
+// const countTotal = function(){
+//   let sum = 0;
+//   return(
+//     setTotal(sum += )
+//   )
+// }
 
     return(
+      <>
         <Table striped bordered hover>
       <thead>
         <tr>
           <th>#</th>
-          <th>Product name</th>
-          <th>Count</th>
+          <th className='product-name'>Product name</th>
+          <th>Qty</th>
+          <th>Price</th>
           <th></th>
           <th></th>
         </tr>
@@ -22,23 +33,25 @@ let dispatch = useDispatch()
         {
             state.cart.map((item, id) => {
                 return(
-                    <tr>
+                    <tr className='cart-table'>
                     <td>{state.cart[id].id}</td>
-                    <td>{state.cart[id].name}</td>
+                    <td><img src={`https://github.com/jeeannyy/kimchi-shop/blob/main/public/img/kimchi${state.cart[id].id}.png?raw=true`} className="cartImg"/>{state.cart[id].name}</td>
                     <td>{state.cart[id].count}</td>
+                    <td>£{state.cart[id].price}</td>
                     <td><button className="countBtn"  
                     onClick={() => {
                         dispatch(increaseCount(state.cart[id].id))
+                        dispatch(addPrice(state.cart[id].id))
                     }}>+</button>
                     <button onClick={() => {
                         dispatch(decreaseCount(state.cart[id].id))
+                        dispatch(deductPrice(state.cart[id].id))
                     }}>-</button>
                     </td>
                     <td><button onClick={() => {
                         dispatch(deleteItem(state.cart[id].id))
-                    }}>Delete</button></td>
+                    }}>❌</button></td>
                     </tr>
-                    
                 )
                 
             })
@@ -47,8 +60,11 @@ let dispatch = useDispatch()
       </tbody>
 
     </Table>
-
-
+            <div className='total'>
+            <span>{`Sub-total: £${total} `}</span>
+            <button>Order</button>
+            </div>
+</>
     )
 }
 

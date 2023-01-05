@@ -70,7 +70,7 @@ function Detail(props){
                 <h4 style={{fontSize: "30px"}} className="pt-5">{findItem.title}</h4>
                 <p style={{fontSize: "16px"}}>{findItem.content}</p>
                 <p style={{fontSize: "18px"}}>£{findItem.price}</p>
-                <button className="btn btn-danger" onClick={() => {dispatch(addItem( { id: findItem.id, name: findItem.title, count: 1}))}}>Add to Cart</button> 
+                <button className="btn btn-danger" onClick={() => {dispatch(addItem( { id: findItem.id, name: findItem.title, count: 1, price: 30}))}}>Add to Cart</button> 
             
             
             </div>
