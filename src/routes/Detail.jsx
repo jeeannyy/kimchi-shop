@@ -28,9 +28,9 @@ function Detail(props){
     //     localStorage.setItem('findItem.id', JSON.stringify(save));
     // },[])
 
-    console.log(localStorage, "storage")
+    // console.log(localStorage, "storage")
 
-    console.log(recentView, "<<<");
+    // console.log(recentView, "<<<");
 
 
     useEffect(()=>{
@@ -41,6 +41,9 @@ function Detail(props){
         isNaN (amount) === 'number' ? alert('I told you! Only numbers allowed!') : null
         }, [amount])
 
+        console.log(findItem.id, "<<<finditem")
+
+
     return(
         <>
             {
@@ -49,8 +52,7 @@ function Detail(props){
             <div className="container">
                     <div className="row">
                       <div className="col-md-6">
-                        {/* <img src={`https://codingapple1.github.io/shop/shoes${findItem.id+1}.jpg`} width="100%" /> */}
-                        <img src={`https://github.com/jeeannyy/kimchi-shop/blob/main/public/img/kimchi0.png?raw=true`} className="cardImg"/>
+                        <img src={`https://github.com/jeeannyy/kimchi-shop/blob/main/public/img/kimchi${findItem.id}.png?raw=true`} className="cardImg"/>
 
                          </div>
 {/*                    
@@ -64,13 +66,15 @@ function Detail(props){
                                     </Card>
         
             </div> */}
-                      <div className="col-md-6 mt-4">
-                        <h4 className="pt-5">{findItem.title}</h4>
-                        <p>{findItem.content}</p>
-                        <p>£{findItem.price}</p>
-                        <button className="btn btn-danger" onClick={() => {dispatch(addItem( { id: findItem.id, name: findItem.title, count: 1}))}}>Order</button> 
-                      </div>
-                    </div>
+            <div className="col-md-6 mt-4">
+                <h4 style={{fontSize: "30px"}} className="pt-5">{findItem.title}</h4>
+                <p style={{fontSize: "16px"}}>{findItem.content}</p>
+                <p style={{fontSize: "18px"}}>£{findItem.price}</p>
+                <button className="btn btn-danger" onClick={() => {dispatch(addItem( { id: findItem.id, name: findItem.title, count: 1}))}}>Add to Cart</button> 
+            
+            
+            </div>
+            </div>
             </div> 
 
             <Nav variant="tabs" defaultActiveKey="link0" className='detailNav'>

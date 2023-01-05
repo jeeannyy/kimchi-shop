@@ -71,7 +71,6 @@ function App() {
           </div>
           <button className="moreBtn" onClick={() => {
             setMoreClick(moreClick + 1);
-            // axios.get(`https://codingapple1.github.io/shop/data${moreClick}.json`)
             axios.get(`https://raw.githubusercontent.com/jeeannyy/kimchi-shop/main/src/data${moreClick}.json`)
             .then((result) => {
               let copy = [...shoes, ...result.data];

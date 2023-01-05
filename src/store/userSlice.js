@@ -8,16 +8,18 @@ const cart = createSlice({
     ],
     reducers : {
         increaseCount(state, action){
-            state.find(i => {return i.id === action.payload})
-            state[action.payload].count += 1;
+            state.find(i => {return i.id === action.payload});
+            state[action.payload].count++;
         },
         decreaseCount(state, action){
-            state.find(i => {return i.id === action.payload})
-            state[action.payload].count < 1 ? alert("We don't allow negative numbers bro") : state[action.payload].count -= 1;
+            state.find(i => {return i.id === action.payload});
+            state[action.payload].count < 1 ? alert("We don't allow negative numbers") : state[action.payload].count--;
         },
         addItem(state, action){
-            state.map(i => i.id === action.payload.id ? i[action.payload].count += 1 :
-            state.push(action.payload))
+            let number = state.findIndex(i => {return i.id === action.payload.id});
+            console.log(action.payload, "<<< action.payload");
+            console.log(action.payload.id, "<<< action.payload.id")
+            number !== -1 ? state[action.payload.id].count++ : state.push(action.payload);
         },
         deleteItem(state, action){
             state.splice(action.payload, 1);

@@ -12,10 +12,10 @@ let dispatch = useDispatch()
       <thead>
         <tr>
           <th>#</th>
-          <th>상품명</th>
-          <th>수량</th>
-          <th>변경하기</th>
-          <th>삭제하기</th>
+          <th>Product name</th>
+          <th>Count</th>
+          <th></th>
+          <th></th>
         </tr>
       </thead>
       <tbody>
@@ -23,7 +23,7 @@ let dispatch = useDispatch()
             state.cart.map((item, id) => {
                 return(
                     <tr>
-                    <td>{state.cart[id].id + 1}</td>
+                    <td>{state.cart[id].id}</td>
                     <td>{state.cart[id].name}</td>
                     <td>{state.cart[id].count}</td>
                     <td><button className="countBtn"  

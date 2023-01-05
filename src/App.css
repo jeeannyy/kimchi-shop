@@ -46,16 +46,16 @@ li{
 }
 
 .detailNav{
-  margin: 30px 50px 30px 50px;
+  margin: 50px 20px 40px 150px;
   width: 80%;
   
 }
 
 .detailContent{
-  width: 80%;
+  width: 75%;
   margin-top: 10px;
-  margin-left: 70px;
-  font-size: 16px;
+  margin-left: 165px;
+  font-size: 15px;
 }
 
 .countBtn{
