@@ -113,7 +113,7 @@ text-align: center;
 .sortBtn{
   padding: 8px 18px 8px 18px;
  
-  margin: 30px 0 30px 0;
+  margin: 30px 0 30px 15px;
  
   font-size: 16px;
 }
@@ -135,4 +135,15 @@ font-size: 17px;
 
 .product-name{
   width: 40%
+}
+
+.imgLink{
+  text-decoration: none;
+  color: rgb(28, 28, 28);
+  width: auto;
+  margin-left: 10px;
+}
+
+.col-md-4{
+  width: 100%;
 }

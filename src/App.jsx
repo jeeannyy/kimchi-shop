@@ -4,7 +4,7 @@ import './App.css';
 import { useEffect, useState } from 'react';
 import { Navbar, Container, Nav } from 'react-bootstrap';
 import data from './data.js';
-import { Routes, Route, Link, useNavigate } from 'react-router-dom';
+import { Routes, Route, Link, useParams } from 'react-router-dom';
 import axios from 'axios';
 
 import Detail from './routes/Detail';
@@ -14,7 +14,6 @@ import Sort from './Sort';
 function Card(props){
   return(
          <div className='col-md-4 cardImg'>
-          {/* <img src={`https://codingapple1.github.io/shop/shoes${props.id}.jpg`}/> */}
           <img src={`https://github.com/jeeannyy/kimchi-shop/blob/main/public/img/kimchi${props.id}.png?raw=true`} className="cardImg"/>
 
           <h4>{props.shoes.title}</h4>
@@ -64,7 +63,7 @@ function App() {
 
             <div className='row'>
           { shoes.map((shoe, index) => {
-              return <Card shoes={shoes[index]} key={index} id={shoes[index].id}/>
+              return <Link className="imgLink" to={`/detail/${shoes[index].id}`}><Card className="cardImg" shoes={shoes[index]} key={index} id={shoes[index].id}/></Link>
               })}
               </div>
           </div>
