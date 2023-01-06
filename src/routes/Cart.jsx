@@ -1,7 +1,7 @@
 import { Table } from 'react-bootstrap'; 
 import { useDispatch, useSelector } from 'react-redux';
 import { increaseCount, decreaseCount, deleteItem, addPrice, deductPrice } from '.././store/userSlice';
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 
 
 function Cart(){
@@ -10,12 +10,24 @@ let state = useSelector((state) => state);
 let dispatch = useDispatch()
 const [total, setTotal] = useState(90);
 
-// const countTotal = function(){
-//   let sum = 0;
-//   return(
-//     setTotal(sum += )
-//   )
-// }
+  //  function totalChanged(){
+  //   let sum = 0;
+  //   for(let i = 0; i < state.length; i++){
+  //   sum += state[i].price;
+  //   setTotal(sum)
+  //   }
+  //   return total;
+  //  }
+
+  //  useEffect(() => {
+  //   let sum = 0;
+  //   for(let i = 0; i < state.cart.length; i++){
+  //   sum += state.cart[i].price;
+  //   setTotal(sum);
+  //   }
+  //   return total;
+  //  }, [state]);
+
 
     return(
       <>
@@ -49,7 +61,7 @@ const [total, setTotal] = useState(90);
                         dispatch(deductPrice(state.cart[id].id))
                     }}>-</button>
                     </td>
-                    <td><button onClick={() => {
+                    <td><button style={{cursor: 'pointer'}} onClick={() => {
                         dispatch(deleteItem(state.cart[id].id))
                     }}>❌</button></td>
                     </tr>
@@ -64,8 +76,6 @@ const [total, setTotal] = useState(90);
             <div className='total'>
             <span>{`Sub-total: £${total} `}</span>
             <button>Order</button>
-           
-
             </div>
           
 </>

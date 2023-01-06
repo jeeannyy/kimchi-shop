@@ -1,3 +1,7 @@
+body{
+  font-family: kanit, sans-serif;
+}
+
 .main-bg{
   height: 950px;
   background-image: url(../public/img/main.jpeg);
@@ -46,16 +50,17 @@ li{
 }
 
 .detailNav{
-  margin: 50px 20px 40px 150px;
+  margin: 50px 20px 40px 130px;
   width: 80%;
+  font-size: 18px;
   
 }
 
 .detailContent{
   width: 75%;
   margin-top: 10px;
-  margin-left: 165px;
-  font-size: 15px;
+  margin-left: 140px;
+  font-size: 18px;
 }
 
 .countBtn{
@@ -73,6 +78,7 @@ text-align: center;
 .cardImg{
   padding-bottom: 10px;
   margin-bottom: 20px;
+  
 }
 
 .cardImg img{
@@ -102,9 +108,9 @@ text-align: center;
 
 .bg-text{
   position: absolute;
-  top: 280px;
+  top: 270px;
   left: 110px;
-  font-size: 70px;
+  font-size: 60px;
   font-weight: 500;
   line-height: 75px;
   font-family: Kanit;
@@ -145,5 +151,23 @@ font-size: 17px;
 }
 
 .col-md-4{
-  width: 100%;
+  /* width: 100%; */
+  padding: 0px;
 }
+
+.total{
+  font-size: 25px;
+  color: rgb(238, 32, 32);
+  display: flex;
+  justify-content: end;
+  margin-top: 50px;
+  margin-right: 100px;
+  
+}
+
+.total button{
+  margin-left: 20px;
+  padding: 4px 14px 4px 14px; 
+  font-size: 18px;
+}
+
