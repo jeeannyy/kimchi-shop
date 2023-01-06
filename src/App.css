@@ -151,7 +151,7 @@ font-size: 17px;
 }
 
 .col-md-4{
-  /* width: 100%; */
+  width: 100%;
   padding: 0px;
 }
 
@@ -171,3 +171,6 @@ font-size: 17px;
   font-size: 18px;
 }
 
+/* .row{
+  margin-bottom: 200px;
+} */
