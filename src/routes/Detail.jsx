@@ -5,7 +5,7 @@ import { useParams } from 'react-router-dom';
 import { Nav, Card } from 'react-bootstrap';
 import ListGroup from 'react-bootstrap/ListGroup';
 import { useDispatch, useSelector } from 'react-redux';
-import { addItem } from '.././store/userSlice';
+import { addItem, addItemPrice } from '.././store/userSlice';
 
 
 
@@ -41,7 +41,8 @@ function Detail(props){
         isNaN (amount) === 'number' ? alert('I told you! Only numbers allowed!') : null
         }, [amount])
 
-        console.log(findItem.id, "<<<finditem")
+        console.log(findItem, "<<< findItem");
+        // console.log(findItem.id, "<<<finditem")
 
 
     return(
@@ -70,7 +71,10 @@ function Detail(props){
                 <h4 style={{fontSize: "30px"}} className="pt-5">{findItem.title}</h4>
                 <p style={{fontSize: "16px"}}>{findItem.content}</p>
                 <p style={{fontSize: "18px"}}>£{findItem.price}</p>
-                <button className="btn btn-danger" onClick={() => {dispatch(addItem( { id: findItem.id, name: findItem.title, count: 1, price: 30}))}}>Add to Cart</button> 
+                <button className="btn btn-danger" onClick={() => {
+                    dispatch(addItem( { id: findItem.id, name: findItem.title, count: 1, price: 30}))
+                    // dispatch(addItemPrice(findItem.id))
+                    }}>Add to Cart</button> 
             
             
             </div>

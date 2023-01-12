@@ -2,41 +2,45 @@ import { createSlice } from '@reduxjs/toolkit';
 
 const cart = createSlice({
     name: 'cart',
-    initialState: [
-        // { id: 0, name: 'Pa Kimchi', count: 2, price: 60}
-    ],
+    initialState: [],
     reducers : {
         increaseCount(state, action){
-            state.find(i => {return i.id === action.payload});
-            state[action.payload].count++;
+           let increase = state.findIndex(i => {return i.id === action.payload});
+            state[increase].count++;
         },
         decreaseCount(state, action){
-            state.find(i => {return i.id === action.payload});
-            state[action.payload].count < 1 ? alert("We don't allow negative numbers") : state[action.payload].count--;
+            let decrease = state.findIndex(i => {return i.id === action.payload});
+            state[decrease].count < 1 ? alert("We don't allow negative numbers") : state[decrease].count--;
         },
         addItem(state, action){
-            let number = state.findIndex(i => {return i.id === action.payload.id});
-            console.log(action.payload, "<<< action.payload");
-            console.log(action.payload.id, "<<< action.payload.id")
-            number !== -1 ? state[action.payload.id].count++ : state.push(action.payload);
+            let addItem = state.findIndex(i => {return i.id === action.payload.id});
+            addItem === -1 ? state.push(action.payload) : state[addItem].count++;
+            // 가격도 같이 올라가야됨
         },
+        // addItemPrice(state, action){
+        //     let addItemPrice = state.findIndex(i => {return i.id === action.payload});
+        //     console.log(addItemPrice,"<<< addItemPrice");
+        //     state[addItemPrice].price += 30;
+        // },
+
+
         deleteItem(state, action){
-            state.splice(action.payload, 1);
+            let deleteItem = state.findIndex(i => {return i.id === action.payload});
+            console.log(deleteItem, "<<<deleteItem");
+            state.splice(deleteItem, 1);
         },
         addPrice(state, action){
-            state.find(i => {return i.id === action.payload});
-            state[action.payload].price += 30;
+            let addPrice = state.findIndex(i => {return i.id === action.payload});
+            console.log(addPrice, "<<<addPrice");
+            state[addPrice].price += 30;
         },
         deductPrice(state, action){
-            state.find(i => {return i.id === action.payload});
-            state[action.payload].price > 1 ?  state[action.payload].price -= 30 : state[action.payload].price = 0;
+            let deductPrice = state.findIndex(i => {return i.id === action.payload});
+            state[deductPrice].price > 1 ?  state[deductPrice].price -= 30 : state[deductPrice].price = 0;
         }
-        // changeTotal(state, action){
-        //     state.find()
-        // }
     }
 })
 
-export let { increaseCount, decreaseCount, addItem, deleteItem, addPrice, deductPrice } = cart.actions;
+export let { increaseCount, decreaseCount, addItem, deleteItem, addPrice, deductPrice, addItemPrice } = cart.actions;
 
 export default cart;
