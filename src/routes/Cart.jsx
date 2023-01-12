@@ -8,7 +8,7 @@ function Cart(){
 
 let state = useSelector((state) => state);
 let dispatch = useDispatch()
-const [total, setTotal] = useState(90);
+const [total, setTotal] = useState(0);
 
   //  function totalChanged(){
   //   let sum = 0;
@@ -61,7 +61,7 @@ const [total, setTotal] = useState(90);
                         dispatch(deductPrice(state.cart[id].id))
                     }}>-</button>
                     </td>
-                    <td><button style={{cursor: 'pointer'}} onClick={() => {
+                    <td><button className='cartDeleteBtn' style={{cursor: 'pointer'}} onClick={() => {
                         dispatch(deleteItem(state.cart[id].id))
                     }}>❌</button></td>
                     </tr>

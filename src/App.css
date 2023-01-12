@@ -171,6 +171,8 @@ font-size: 17px;
   font-size: 18px;
 }
 
-/* .row{
-  margin-bottom: 200px;
-} */
+.cartDeleteBtn{
+  font-size: 12px;
+  background-color: none;
+
+}

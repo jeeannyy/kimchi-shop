@@ -3,8 +3,7 @@ import { createSlice } from '@reduxjs/toolkit';
 const cart = createSlice({
     name: 'cart',
     initialState: [
-        { id: 0, name: 'Pa Kimchi', count: 2, price: 60},
-        { id: 1, name: 'Yeolmu-kimchi', count: 1, price: 30}
+        // { id: 0, name: 'Pa Kimchi', count: 2, price: 60}
     ],
     reducers : {
         increaseCount(state, action){
@@ -32,6 +31,9 @@ const cart = createSlice({
             state.find(i => {return i.id === action.payload});
             state[action.payload].price > 1 ?  state[action.payload].price -= 30 : state[action.payload].price = 0;
         }
+        // changeTotal(state, action){
+        //     state.find()
+        // }
     }
 })
 
