@@ -31,7 +31,7 @@ function App() {
   useEffect(() => {
     localStorage.setItem('watched', JSON.stringify([]));
   }, [])
-  // 이건 처음 App 실행때 딱 한 번만 만들어주면 되는거임
+  // 이건 처음 App 접속할때마다 돌아가는거임
 
 
   useEffect(() => {

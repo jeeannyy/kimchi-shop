@@ -1,7 +1,7 @@
 /* eslint-disable */
 
 import React, {useState, useEffect} from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 import { Nav, Card } from 'react-bootstrap';
 import ListGroup from 'react-bootstrap/ListGroup';
 import { useDispatch, useSelector } from 'react-redux';
@@ -21,19 +21,29 @@ function Detail(props){
     let dispatch = useDispatch();
     const [recentView, setRecentView] = useState([]);
 
-
     useEffect(() => {
-        let newArr = localStorage.getItem('watched'); //[]
+        let newArr = localStorage.getItem('watched'); 
         newArr = JSON.parse(newArr)
-        console.log(newArr); // [ {}, {}, {}]
         const checkIndex = newArr.findIndex(i => {return i.id === findItem.id});
-        console.log(checkIndex, "checkIndex"); // -1
-        if (checkIndex === -1 ){
-           newArr.push(findItem);
+
+        console.log(checkIndex, "<<checkIndex");
+        console.log(findItem, "<<findItem");
+
+        
+        if (checkIndex !== -1 ){
+           null;
+        } else{
+          newArr.push(findItem);
         }
-        setRecentView(JSON.stringify(newArr));
+        setRecentView(newArr); 
+
+        
         localStorage.setItem('watched', JSON.stringify(newArr));
+
+       
       }, [])
+      console.log(recentView, "<<<recentView")
+      console.log(recentView[0], "<<<recentView[0]")
 
     useEffect(()=>{
         setTimeout(()=>{ setAdBar(false) }, 3000)
@@ -52,7 +62,7 @@ function Detail(props){
             <div className="container">
                     <div className="row">
                       <div className="col-md-6">
-                        <img src={`https://github.com/jeeannyy/kimchi-shop/blob/main/public/img/kimchi${findItem.id}.png?raw=true`} className="cardImg"/>
+                        <img src={`https://github.com/jeeannyy/kimchi-shop/blob/main/public/img/kimchi${findItem.id}.png?raw=true`} className="detail-cardImg"/>
 
                          </div>
 
@@ -66,24 +76,15 @@ function Detail(props){
                     }}>Add to Cart</button> 
             </div>
             </div>
-            <div>
-            <h3>최근본상품</h3>
-                <p>{recentView}</p>
-                {/* <p>{findItem}</p> */}
-                {/* {
-                    recentView.map((item, index) => {
-                        return (
-                            <div>
-                            <h1>{item.title}</h1>
-                            </div>
-                        )
-                            
-                    
-                    })
-                }   */}
-            
+            <div className='recently-container'>
+            <h5 style={{fontWeight: 400, fontFamily: "kanit", paddingLeft: 26, fontSize:16}}>RECENTLY VIEWED</h5>
+                <ul>
+                    {recentView.map(recent => {
+                     return <Link to={`/detail/${recent.id}`}><li><img src={`https://github.com/jeeannyy/kimchi-shop/blob/main/public/img/kimchi${recent.id}.png?raw=true`} className="recentView-image"/></li></Link>  
+                    })}
+                </ul>
             </div>
-            </div> 
+        </div> 
 
             <Nav variant="tabs" defaultActiveKey="link0" className='detailNav'>
                 <Nav.Item>
@@ -114,6 +115,8 @@ function Detail(props){
             </>
         )
         }
+
+ 
 
 
 export default Detail;
