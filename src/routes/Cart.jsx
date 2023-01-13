@@ -10,23 +10,15 @@ let state = useSelector((state) => state);
 let dispatch = useDispatch()
 const [total, setTotal] = useState(0);
 
-  //  function totalChanged(){
-  //   let sum = 0;
-  //   for(let i = 0; i < state.length; i++){
-  //   sum += state[i].price;
-  //   setTotal(sum)
-  //   }
-  //   return total;
-  //  }
+console.log(state.cart.length, "<<<state.cart")
 
-  //  useEffect(() => {
-  //   let sum = 0;
-  //   for(let i = 0; i < state.cart.length; i++){
-  //   sum += state.cart[i].price;
-  //   setTotal(sum);
-  //   }
-  //   return total;
-  //  }, [state]);
+   useEffect(() => {
+    let sum = 0;
+    for(let i = 0; i < state.cart.length; i++){
+    sum += state.cart[i].price;
+    }
+    setTotal(sum);
+   }, [state]);
 
 
     return(
