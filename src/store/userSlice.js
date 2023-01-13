@@ -18,19 +18,16 @@ const cart = createSlice({
         },
         addItemPrice(state, action){
             let addItemPrice = state.findIndex(i => {return i.id === action.payload});
-            console.log(addItemPrice,"<<< addItemPrice");
             state[addItemPrice].price += 30; 
         },
 
 
         deleteItem(state, action){
             let deleteItem = state.findIndex(i => {return i.id === action.payload});
-            console.log(deleteItem, "<<<deleteItem");
             state.splice(deleteItem, 1);
         },
         addPrice(state, action){
             let addPrice = state.findIndex(i => {return i.id === action.payload});
-            console.log(addPrice, "<<<addPrice");
             state[addPrice].price += 30;
         },
         deductPrice(state, action){

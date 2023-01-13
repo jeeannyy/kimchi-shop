@@ -28,6 +28,11 @@ function App() {
   const [moreClick, setMoreClick] = useState(2);
   const [loading, setLoading] = useState(true);
 
+  useEffect(() => {
+    localStorage.setItem('watched', JSON.stringify([]));
+  }, [])
+  // 이건 처음 App 실행때 딱 한 번만 만들어주면 되는거임
+
 
   useEffect(() => {
     moreClick > 4 ? alert('No more items') : null;
@@ -72,7 +77,6 @@ function App() {
             axios.get(`https://raw.githubusercontent.com/jeeannyy/kimchi-shop/main/src/data${moreClick}.json`)
             .then((result) => {
               let copy = [...shoes, ...result.data];
-              // copy.concat(result.data);
               setShoes(copy);
               setLoading(false);
               })     

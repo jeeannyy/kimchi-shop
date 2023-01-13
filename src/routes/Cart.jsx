@@ -10,8 +10,6 @@ let state = useSelector((state) => state);
 let dispatch = useDispatch()
 const [total, setTotal] = useState(0);
 
-console.log(state.cart.length, "<<<state.cart")
-
    useEffect(() => {
     let sum = 0;
     for(let i = 0; i < state.cart.length; i++){

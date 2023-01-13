@@ -21,17 +21,19 @@ function Detail(props){
     let dispatch = useDispatch();
     const [recentView, setRecentView] = useState([]);
 
-    // useEffect(() =>{
-    //     let save = localStorage.setItem(findItem.id, findItem.title);
-    //     save = JSON.stringify(save);
-    //     save.push(findItem.title);
-    //     localStorage.setItem('findItem.id', JSON.stringify(save));
-    // },[])
 
-    // console.log(localStorage, "storage")
-
-    // console.log(recentView, "<<<");
-
+    useEffect(() => {
+        let newArr = localStorage.getItem('watched'); //[]
+        newArr = JSON.parse(newArr)
+        console.log(newArr); // [ {}, {}, {}]
+        const checkIndex = newArr.findIndex(i => {return i.id === findItem.id});
+        console.log(checkIndex, "checkIndex"); // -1
+        if (checkIndex === -1 ){
+           newArr.push(findItem);
+        }
+        setRecentView(JSON.stringify(newArr));
+        localStorage.setItem('watched', JSON.stringify(newArr));
+      }, [])
 
     useEffect(()=>{
         setTimeout(()=>{ setAdBar(false) }, 3000)
@@ -40,9 +42,6 @@ function Detail(props){
       useEffect(() => {
         isNaN (amount) === 'number' ? alert('I told you! Only numbers allowed!') : null
         }, [amount])
-
-        console.log(findItem, "<<< findItem");
-        // console.log(findItem.id, "<<<finditem")
 
 
     return(
@@ -56,17 +55,7 @@ function Detail(props){
                         <img src={`https://github.com/jeeannyy/kimchi-shop/blob/main/public/img/kimchi${findItem.id}.png?raw=true`} className="cardImg"/>
 
                          </div>
-{/*                    
-                         <div className="recentItem">
-                                    <Card>
-                                        <Card.Header>최근 본 상품</Card.Header>
-                                        <ListGroup variant="flush">
-                                            <ListGroup.Item >{recentView}</ListGroup.Item>
 
-                                        </ListGroup>
-                                    </Card>
-        
-            </div> */}
             <div className="col-md-6 mt-4">
                 <h4 style={{fontSize: "30px"}} className="pt-5">{findItem.title}</h4>
                 <p style={{fontSize: "16px"}}>{findItem.content}</p>
@@ -75,9 +64,24 @@ function Detail(props){
                     dispatch(addItem( { id: findItem.id, name: findItem.title, count: 1, price: 0}))
                     dispatch(addItemPrice(findItem.id))
                     }}>Add to Cart</button> 
-            
-            
             </div>
+            </div>
+            <div>
+            <h3>최근본상품</h3>
+                <p>{recentView}</p>
+                {/* <p>{findItem}</p> */}
+                {/* {
+                    recentView.map((item, index) => {
+                        return (
+                            <div>
+                            <h1>{item.title}</h1>
+                            </div>
+                        )
+                            
+                    
+                    })
+                }   */}
+            
             </div>
             </div> 
 
@@ -107,11 +111,6 @@ function Detail(props){
             }
             </div>
          
-
-
-
-
-
             </>
         )
         }
