@@ -1,4 +1,4 @@
-import { Table } from 'react-bootstrap'; 
+import { Button, Table } from 'react-bootstrap'; 
 import { useDispatch, useSelector } from 'react-redux';
 import { increaseCount, decreaseCount, deleteItem, addPrice, deductPrice } from '.././store/userSlice';
 import { useEffect, useState } from 'react'
@@ -41,19 +41,22 @@ const [total, setTotal] = useState(0);
                     <td><img src={`https://github.com/jeeannyy/kimchi-shop/blob/main/public/img/kimchi${state.cart[id].id}.png?raw=true`} className="cartImg"/>{state.cart[id].name}</td>
                     <td>{state.cart[id].count}</td>
                     <td>£{state.cart[id].price}</td>
-                    <td><button className="countBtn"  
+                    <td>
+                     <Button className="countBtn" style={{fontWeight: 900, fontSize: 18}} 
                     onClick={() => {
                         dispatch(increaseCount(state.cart[id].id))
                         dispatch(addPrice(state.cart[id].id))
-                    }}>+</button>
-                    <button onClick={() => {
+                    }} variant="warning">+</Button>
+                      <Button className="countBtn" style={{fontWeight: 900, fontSize: 18}} 
+                      onClick={() => {
                         dispatch(decreaseCount(state.cart[id].id))
                         dispatch(deductPrice(state.cart[id].id))
-                    }}>-</button>
+                    }} variant="warning">-</Button>
                     </td>
-                    <td><button className='cartDeleteBtn' style={{cursor: 'pointer'}} onClick={() => {
+                    <td>
+                    <Button className='cartDeleteBtn' style={{cursor: 'pointer'}} onClick={() => {
                         dispatch(deleteItem(state.cart[id].id))
-                    }}>❌</button></td>
+                    }} variant="danger">Delete</Button></td>
                     </tr>
                 )
                 
@@ -65,7 +68,7 @@ const [total, setTotal] = useState(0);
     </Table>
             <div className='total'>
             <span>{`Sub-total: £${total} `}</span>
-            <button>Order</button>
+            <Button variant="success">Order</Button>
             </div>
           
 </>

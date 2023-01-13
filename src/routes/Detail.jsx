@@ -78,6 +78,7 @@ function Detail(props){
             </div>
             <div className='recently-container'>
             <h5 style={{fontWeight: 400, fontFamily: "kanit", paddingLeft: 26, fontSize:16}}>RECENTLY VIEWED</h5>
+    
                 <ul>
                     {recentView.map(recent => {
                      return <Link to={`/detail/${recent.id}`}><li><img src={`https://github.com/jeeannyy/kimchi-shop/blob/main/public/img/kimchi${recent.id}.png?raw=true`} className="recentView-image"/></li></Link>  
