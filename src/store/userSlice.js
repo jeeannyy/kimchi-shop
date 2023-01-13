@@ -15,13 +15,12 @@ const cart = createSlice({
         addItem(state, action){
             let addItem = state.findIndex(i => {return i.id === action.payload.id});
             addItem === -1 ? state.push(action.payload) : state[addItem].count++;
-            // 가격도 같이 올라가야됨
         },
-        // addItemPrice(state, action){
-        //     let addItemPrice = state.findIndex(i => {return i.id === action.payload});
-        //     console.log(addItemPrice,"<<< addItemPrice");
-        //     state[addItemPrice].price += 30;
-        // },
+        addItemPrice(state, action){
+            let addItemPrice = state.findIndex(i => {return i.id === action.payload});
+            console.log(addItemPrice,"<<< addItemPrice");
+            state[addItemPrice].price += 30; 
+        },
 
 
         deleteItem(state, action){

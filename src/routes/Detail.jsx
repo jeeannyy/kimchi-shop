@@ -72,8 +72,8 @@ function Detail(props){
                 <p style={{fontSize: "16px"}}>{findItem.content}</p>
                 <p style={{fontSize: "18px"}}>£{findItem.price}</p>
                 <button className="btn btn-danger" onClick={() => {
-                    dispatch(addItem( { id: findItem.id, name: findItem.title, count: 1, price: 30}))
-                    // dispatch(addItemPrice(findItem.id))
+                    dispatch(addItem( { id: findItem.id, name: findItem.title, count: 1, price: 0}))
+                    dispatch(addItemPrice(findItem.id))
                     }}>Add to Cart</button> 
             
             
