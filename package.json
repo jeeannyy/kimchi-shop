@@ -1,7 +1,7 @@
 {
-  "name": "kimchishop",
+  "name": "kimchi-shop",
   "version": "0.1.0",
-  "private": true,
+  "private": false,
   "dependencies": {
     "@reduxjs/toolkit": "^1.9.1",
     "@stripe/stripe-js": "^1.46.0",
