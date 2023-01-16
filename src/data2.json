@@ -1,23 +1,22 @@
 [
-    {
-      "id" : 6,
-      "title" : "Musaengchae",
-      "content" : "Shredded white radish",
-      "price" : 30
-    },
+  {
+    "id": 6,
+    "title": "Musaengchae",
+    "content": "Shredded white radish",
+    "price": 30
+  },
 
-    {
-      "id" : 7,
-      "title" : "Baek kimchi",
-      "content" : "White Cabbage Kimchi",
-      "price" : 30
-    },
+  {
+    "id": 7,
+    "title": "Baek kimchi",
+    "content": "White Cabbage Kimchi",
+    "price": 30
+  },
 
-    {
-      "id" : 8,
-      "title" : "Sweet Potato Stalks kimchi",
-      "content" : "Gogumasun kimchi",
-      "price" : 30
-    }
-  ]
-
+  {
+    "id": 8,
+    "title": "Sweet Potato Stalks kimchi",
+    "content": "Gogumasun kimchi",
+    "price": 30
+  }
+]
