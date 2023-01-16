@@ -3,7 +3,8 @@
 ## Overview
 
 This app was created for the purpose of selling Kimchi.
-[Kimchi shop main page]()
+![Kimchi shop main page gif](./public//img/11.gif)
+![Kimchi shop detail and cart page gif](./public/img/22.gif)
 
 #### LIVE LINK : https://kimchi-shop.netlify.app/
 
