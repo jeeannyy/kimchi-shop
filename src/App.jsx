@@ -2,7 +2,7 @@
 
 import "./App.css";
 import { useEffect, useState } from "react";
-import { Navbar, Container, Nav } from "react-bootstrap";
+import { Navbar, Container, Nav, Button } from "react-bootstrap";
 import data from "./data.js";
 import { Routes, Route, Link, useParams } from "react-router-dom";
 import axios from "axios";
@@ -13,12 +13,12 @@ import Sort from "./Sort";
 
 function Card(props) {
   return (
-    <div className="col-md-4 cardImg">
+    <div className="col-md-4 p-0 w-100" style={{ marginBottom: "40px" }}>
       <img
         src={`https://github.com/jeeannyy/kimchi-shop/blob/main/public/img/kimchi${props.id}.png?raw=true`}
-        className="cardImg"
+        className="main-card"
+        alt="different kimchi images"
       />
-
       <h4>{props.shoes.title}</h4>
       <p>{props.shoes.content}</p>
     </div>
@@ -28,20 +28,18 @@ function Card(props) {
 function App() {
   const [shoes, setShoes] = useState(data);
   const [moreClick, setMoreClick] = useState(2);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     localStorage.setItem("watched", JSON.stringify([]));
+    localStorage.setItem("cartItem", JSON.stringify([]));
   }, []);
-  // 이건 처음 App 접속할때마다 돌아가는거임
 
   useEffect(() => {
     moreClick > 4 ? alert("No more items") : null;
   }, [moreClick]);
 
-  {
-    loading === true ? <div>Loading...</div> : null;
-  }
+  if (loading) return <div>Loading...</div>;
 
   return (
     <div className="App">
@@ -49,13 +47,13 @@ function App() {
         <Container>
           <Navbar.Brand href="/kimchi-shop">Kimchi</Navbar.Brand>
           <Nav className="me-auto">
-            <Link className="navLink" to={"/kimchi-shop"}>
+            <Link to={"/kimchi-shop"} class="p-2 navLink">
               Home
             </Link>
-            <Link className="navLink" to={`/detail/0`}>
+            <Link to={`/detail/0`} class="p-2 navLink">
               Detail
             </Link>
-            <Link className="navLink" to={`/cart`}>
+            <Link to={`/cart`} class="p-2 navLink">
               Cart
             </Link>
           </Nav>
@@ -86,37 +84,42 @@ function App() {
                         to={`/detail/${shoes[index].id}`}
                       >
                         <Card
-                          className="cardImg"
                           shoes={shoes[index]}
                           key={index}
                           id={shoes[index].id}
+                          className="col-sm-4"
                         />
                       </Link>
                     );
                   })}
                 </div>
               </div>
-              <button
-                className="moreBtn"
-                onClick={() => {
-                  setMoreClick(moreClick + 1);
-                  axios
-                    .get(
-                      `https://raw.githubusercontent.com/jeeannyy/kimchi-shop/main/src/data${moreClick}.json`
-                    )
-                    .then((result) => {
-                      let copy = [...shoes, ...result.data];
-                      setShoes(copy);
-                      setLoading(false);
-                    })
-                    .catch(() => {
-                      console.log("error");
-                      setLoading(false);
-                    });
-                }}
-              >
-                more
-              </button>
+              <div className="d-grid col-6 mx-auto">
+                <Button
+                  variant="success"
+                  size="lg"
+                  className="moreBtn"
+                  onClick={() => {
+                    setMoreClick(moreClick + 1);
+                    setLoading(true);
+                    axios
+                      .get(
+                        `https://raw.githubusercontent.com/jeeannyy/kimchi-shop/main/src/data${moreClick}.json`
+                      )
+                      .then((result) => {
+                        let copy = [...shoes, ...result.data];
+                        setShoes(copy);
+                        setLoading(false);
+                      })
+                      .catch(() => {
+                        console.log("error");
+                        setLoading(false);
+                      });
+                  }}
+                >
+                  more
+                </Button>
+              </div>
             </>
           }
         />
@@ -124,7 +127,10 @@ function App() {
           path="/detail/:itemId"
           element={<Detail shoes={shoes} setShoes={setShoes} />}
         />
-        <Route path="/cart" element={<Cart />}></Route>
+        <Route
+          path="/cart"
+          element={<Cart shoes={shoes} setShoes={setShoes} />}
+        ></Route>
       </Routes>
     </div>
   );

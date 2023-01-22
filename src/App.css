@@ -1,5 +1,16 @@
 body {
   font-family: kanit, sans-serif;
+  text-decoration: none;
+}
+
+li {
+  list-style-type: none;
+}
+
+.main-container {
+  position: relative;
+  text-align: center;
+  color: whitesmoke;
 }
 
 .main-bg {
@@ -9,98 +20,6 @@ body {
   background-position: center;
 }
 
-.container {
-  width: 100%;
-  height: 100%;
-  /* display: flex; */
-}
-
-.colImg {
-  width: 80%;
-}
-
-li {
-  list-style-type: none;
-}
-
-.navLink {
-  text-decoration: none;
-  color: whitesmoke;
-  padding: 20px;
-}
-
-.adBar {
-  width: 100%;
-  background-color: lightblue;
-  padding: 25px;
-  text-align: center;
-  font-size: 20px;
-}
-
-.transition-start {
-  opacity: 0;
-}
-
-.transition-end {
-  opacity: 1;
-  transition: opacity 0.3s ease-in-out;
-}
-
-.detailNav {
-  margin: 50px 20px 40px 130px;
-  width: 80%;
-  font-size: 18px;
-}
-
-.detailContent {
-  width: 75%;
-  margin-top: 10px;
-  margin-left: 140px;
-  font-size: 18px;
-  margin-bottom: 200px;
-}
-
-.countBtn {
-  margin-right: 5px;
-}
-
-.recentItem {
-  margin-left: 500px;
-  width: 300px;
-  display: flex;
-  justify-content: flex-end;
-  text-align: center;
-}
-
-.cardImg {
-  padding-bottom: 10px;
-  margin-bottom: 20px;
-}
-
-.cardImg img {
-  width: 400px;
-  height: 400px;
-}
-
-.moreBtn {
-  padding: 10px 30px 10px 30px;
-  display: flex;
-  justify-content: center;
-  margin: auto;
-  width: 30%;
-  text-align: center;
-  font-size: 18px;
-  border: 1px solid rgb(59, 59, 59);
-  margin-top: 30px;
-  margin-bottom: 50px;
-}
-
-.main-container {
-  position: relative;
-  text-align: center;
-  color: white;
-}
-
 .bg-text {
   position: absolute;
   top: 270px;
@@ -108,76 +27,38 @@ li {
   font-size: 60px;
   font-weight: 500;
   line-height: 75px;
-  font-family: Kanit;
 }
 
-.sortBtn {
-  padding: 8px 18px 8px 18px;
-
-  margin: 30px 0 30px 15px;
-
-  font-size: 16px;
+.main-card {
+  width: 400px;
+  height: 400px;
+  padding-bottom: 10px;
 }
 
-.col-md-6 {
-  margin-top: 50px;
-  padding-right: 0;
-  margin-right: 0;
-}
-
-.cart-table {
-  font-size: 17px;
-}
-
-.cartImg {
-  width: 200px;
-  height: 200px;
-  margin-right: 30px;
-}
-
-.product-name {
-  width: 40%;
-}
-
-.imgLink {
+.navLink {
   text-decoration: none;
-  color: rgb(28, 28, 28);
-  width: auto;
-  margin-left: 10px;
+  color: whitesmoke;
 }
 
-.col-md-4 {
-  width: 100%;
-  padding: 0px;
-}
-
-.total {
+.ad-bar {
+  text-align: center;
   font-size: 25px;
-  color: rgb(70, 70, 70);
-  display: flex;
-  justify-content: end;
-  margin-top: 50px;
-  margin-right: 100px;
 }
 
-.total button {
-  margin-left: 20px;
-  padding: 4px 14px 4px 14px;
+.detailNav {
+  width: 80%;
+  margin: 50px 20px 40px 100px;
   font-size: 18px;
-  margin-bottom: 50px;
 }
 
-.cartDeleteBtn {
-  font-size: 12px;
-  background-color: none;
+.detailContent {
+  width: 80%;
+  font-size: 18px;
+  margin: 10px 0 200px 100px;
 }
 
 .recently-container {
-  position: absolute;
-  right: 70px;
-  top: 165px;
-  display: flex;
-  flex-direction: column;
+  margin-top: 50px;
 }
 
 .recentView-image {
@@ -190,5 +71,33 @@ li {
 .detail-cardImg {
   width: 450px;
   height: 400px;
-  margin-left: 80px;
+  margin: 50px 0 0 80px;
+}
+
+.cartImg {
+  width: 200px;
+  height: 200px;
+  margin-right: 50px;
+}
+
+.imgLink {
+  text-decoration: none;
+  color: rgb(28, 28, 28);
+  width: auto;
+  margin-left: 10px;
+}
+
+.countBtn {
+  font-weight: 900;
+  font-size: 18px;
+  margin-right: 5px;
+}
+
+.total {
+  font-size: 25px;
+  color: rgb(70, 70, 70);
+  display: flex;
+  justify-content: end;
+  margin-top: 50px;
+  margin-right: 100px;
 }

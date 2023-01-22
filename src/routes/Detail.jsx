@@ -2,21 +2,44 @@
 
 import React, { useState, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
-import { Nav, Card } from "react-bootstrap";
+import { Nav, Alert } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { addItem, addItemPrice } from ".././store/userSlice";
 
 function Detail(props) {
   let { itemId } = useParams();
   let [adBar, setAdBar] = useState(true);
-
   let [amount, setAmount] = useState("");
   const [tab, setTab] = useState(0);
+  let dispatch = useDispatch();
+
   let findItem = props.shoes.find((shoe) => {
     return shoe.id == itemId;
   });
-  let dispatch = useDispatch();
   const [recentView, setRecentView] = useState([]);
+
+  // button 누르면 일어나는 function 만들기
+
+  const [cartItems, setCartItems] = useState([]);
+
+  function cartStorage() {
+    let newArray = localStorage.getItem("cartItem");
+    newArray = JSON.parse(newArray);
+    const checkId = newArray.findIndex((i) => {
+      return i.id === findItem.id;
+    });
+
+    if (checkId !== -1) {
+      null;
+    } else {
+      newArray.push(findItem);
+    }
+
+    setCartItems(newArray);
+    localStorage.setItem("cartItem", JSON.stringify(newArray));
+  }
+
+  // 까지 test 코드
 
   useEffect(() => {
     let newArr = localStorage.getItem("watched");
@@ -24,9 +47,6 @@ function Detail(props) {
     const checkIndex = newArr.findIndex((i) => {
       return i.id === findItem.id;
     });
-
-    console.log(checkIndex, "<<checkIndex");
-    console.log(findItem, "<<findItem");
 
     if (checkIndex !== -1) {
       null;
@@ -37,8 +57,6 @@ function Detail(props) {
 
     localStorage.setItem("watched", JSON.stringify(newArr));
   }, []);
-  console.log(recentView, "<<<recentView");
-  console.log(recentView[0], "<<<recentView[0]");
 
   useEffect(() => {
     setTimeout(() => {
@@ -55,20 +73,21 @@ function Detail(props) {
   return (
     <>
       {adBar === true ? (
-        <div className="adBar transition-start transition-end">
-          If you buy in 3 seconds, you can get discount
-        </div>
+        <Alert key={"info"} variant={"info"} className="ad-bar">
+          If you buy in 3 seconds, you can get discount!
+        </Alert>
       ) : null}
       <div className="container">
         <div className="row">
-          <div className="col-md-6">
+          <div className="col-lg-6 col-md-7">
             <img
               src={`https://github.com/jeeannyy/kimchi-shop/blob/main/public/img/kimchi${findItem.id}.png?raw=true`}
               className="detail-cardImg"
+              alt="selected kimchi image from home tab"
             />
           </div>
 
-          <div className="col-md-6 mt-4">
+          <div className="col-lg-4 col-md-3">
             <h4 style={{ fontSize: "30px" }} className="pt-5">
               {findItem.title}
             </h4>
@@ -77,6 +96,7 @@ function Detail(props) {
             <button
               className="btn btn-danger"
               onClick={() => {
+                cartStorage();
                 dispatch(
                   addItem({
                     id: findItem.id,
@@ -91,98 +111,97 @@ function Detail(props) {
               Add to Cart
             </button>
           </div>
-        </div>
-        <div className="recently-container">
-          <h5
-            style={{
-              fontWeight: 400,
-              fontFamily: "kanit",
-              paddingLeft: 26,
-              fontSize: 16,
-            }}
-          >
-            RECENTLY VIEWED
-          </h5>
 
-          <ul>
-            {recentView.map((recent) => {
-              return (
-                <Link to={`/detail/${recent.id}`}>
-                  <li>
-                    <img
-                      src={`https://github.com/jeeannyy/kimchi-shop/blob/main/public/img/kimchi${recent.id}.png?raw=true`}
-                      className="recentView-image"
-                    />
-                  </li>
-                </Link>
-              );
-            })}
-          </ul>
-        </div>
-      </div>
+          <div className="col-lg-2 col-md-10 recently-container">
+            <h5
+              style={{
+                paddingLeft: 16,
+              }}
+            >
+              RECENTLY VIEWED
+            </h5>
 
-      <Nav variant="tabs" defaultActiveKey="link0" className="detailNav">
-        <Nav.Item>
-          <Nav.Link
-            eventKey="link0"
-            onClick={() => {
-              setTab(0);
-            }}
-          >
-            How to Store
-          </Nav.Link>
-        </Nav.Item>
-        <Nav.Item>
-          <Nav.Link
-            eventKey="link1"
-            onClick={() => {
-              setTab(1);
-            }}
-          >
-            Health Benefit
-          </Nav.Link>
-        </Nav.Item>
-        <Nav.Item>
-          <Nav.Link
-            eventKey="link2"
-            onClick={() => {
-              setTab(2);
-            }}
-          >
-            Score
-          </Nav.Link>
-        </Nav.Item>
-        <Nav.Item>
-          <Nav.Link
-            eventKey="link3"
-            onClick={() => {
-              setTab(3);
-            }}
-          >
-            Place of production
-          </Nav.Link>
-        </Nav.Item>
-      </Nav>
-
-      <div className="detailContent">
-        {tab === 0 ? (
-          <div>
-            In the refrigerator, it stays fresh much longer(about 3~6 months)
-            and continues to ferment, which may lead to a sourer taste. Be sure
-            to refrigerate your kimchi at or below 39°F (4°C), as warmer
-            temperatures may accelerate spoilage.
+            <ul>
+              {recentView.map((recent) => {
+                return (
+                  <Link to={`/detail/${recent.id}`}>
+                    <li>
+                      <img
+                        src={`https://github.com/jeeannyy/kimchi-shop/blob/main/public/img/kimchi${recent.id}.png?raw=true`}
+                        className="recentView-image"
+                        alt="recently viewed kimchi image"
+                      />
+                    </li>
+                  </Link>
+                );
+              })}
+            </ul>
           </div>
-        ) : tab === 1 ? (
-          <div>
-            Vitamin A for Heart Health, Vitamin C for Immune Health, Vitamin K,
-            Folate, Beta-carotene, Choline, Potassium, Calcium, Gut-Friendly
-            Bacteria
+
+          <Nav variant="tabs" defaultActiveKey="link0" className="detailNav">
+            <Nav.Item>
+              <Nav.Link
+                eventKey="link0"
+                onClick={() => {
+                  setTab(0);
+                }}
+              >
+                How to Store
+              </Nav.Link>
+            </Nav.Item>
+            <Nav.Item>
+              <Nav.Link
+                eventKey="link1"
+                onClick={() => {
+                  setTab(1);
+                }}
+              >
+                Health Benefit
+              </Nav.Link>
+            </Nav.Item>
+            <Nav.Item>
+              <Nav.Link
+                eventKey="link2"
+                onClick={() => {
+                  setTab(2);
+                }}
+              >
+                Score
+              </Nav.Link>
+            </Nav.Item>
+            <Nav.Item>
+              <Nav.Link
+                eventKey="link3"
+                onClick={() => {
+                  setTab(3);
+                }}
+              >
+                Place of production
+              </Nav.Link>
+            </Nav.Item>
+          </Nav>
+
+          <div className="detailContent">
+            {tab === 0 ? (
+              <div>
+                In the refrigerator, it stays fresh much longer(about 3~6
+                months) and continues to ferment, which may lead to a sourer
+                taste. Be sure to refrigerate your kimchi at or below 39°F
+                (4°C), as warmer temperatures may accelerate spoilage.
+              </div>
+            ) : tab === 1 ? (
+              <div>
+                Vitamin A for Heart Health, Vitamin C for Immune Health, Vitamin
+                K, Folate, Beta-carotene, Choline, Potassium, Calcium,
+                Gut-Friendly Bacteria
+              </div>
+            ) : tab === 2 ? (
+              <div>⭐️⭐️⭐️⭐️⭐️ (10/10)</div>
+            ) : tab === 3 ? (
+              <div>Made in South Korea</div>
+            ) : null}
           </div>
-        ) : tab === 2 ? (
-          <div>⭐️⭐️⭐️⭐️⭐️ (10/10)</div>
-        ) : tab === 3 ? (
-          <div>Made in South Korea</div>
-        ) : null}
+        </div>
       </div>
     </>
   );

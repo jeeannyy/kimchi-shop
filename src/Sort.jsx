@@ -1,10 +1,12 @@
+import { Button } from "react-bootstrap";
+
 function Sort(props) {
   return (
-    <button
-      className="sortBtn"
+    <Button
+      variant="outline-success"
+      style={{ margin: "30px 0 30px 15px", fontWeight: "900" }}
       onClick={() => {
         let byTitle = [...props.shoes].slice(0);
-
         byTitle.sort(function (a, b) {
           let x = a.title.toLowerCase();
           let y = b.title.toLowerCase();
@@ -13,7 +15,7 @@ function Sort(props) {
       }}
     >
       A - Z
-    </button>
+    </Button>
   );
 }
 
