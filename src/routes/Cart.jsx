@@ -27,11 +27,11 @@ function Cart(props) {
 
   return (
     <>
-      <Table striped bordered hover style={{ fontSize: "17px" }}>
+      <Table striped bordered hover className="table">
         <thead>
           <tr>
             <th>#</th>
-            <th style={{ width: "40%" }}>Product name</th>
+            <th className="productName">Product name</th>
             <th>Qty</th>
             <th>Price</th>
             <th></th>
@@ -49,7 +49,9 @@ function Cart(props) {
                     className="cartImg"
                     alt="kimchi image in table on cart page"
                   />
-                  {state.cart[id].name}
+                  <span className="cart-productName">
+                    {state.cart[id].name}
+                  </span>
                 </td>
                 <td>{state.cart[id].count}</td>
                 <td>£{state.cart[id].price}</td>
@@ -81,6 +83,7 @@ function Cart(props) {
                       dispatch(deleteItem(state.cart[id].id));
                     }}
                     variant="danger"
+                    className="deleteBtn"
                   >
                     X
                   </Button>
@@ -93,6 +96,7 @@ function Cart(props) {
       <div className="total">
         <span>{`Sub-total: £${total} `}</span>
         <Button
+          className="order-button"
           variant="success"
           size="lg"
           style={{ marginLeft: "20px" }}

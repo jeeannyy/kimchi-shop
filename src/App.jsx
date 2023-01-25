@@ -87,7 +87,6 @@ function App() {
                           shoes={shoes[index]}
                           key={index}
                           id={shoes[index].id}
-                          className="col-sm-4"
                         />
                       </Link>
                     );

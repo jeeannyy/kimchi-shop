@@ -1,3 +1,7 @@
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   font-family: kanit, sans-serif;
   text-decoration: none;
@@ -22,9 +26,9 @@ li {
 
 .bg-text {
   position: absolute;
-  top: 270px;
+  top: 220px;
   left: 110px;
-  font-size: 60px;
+  font-size: 62px;
   font-weight: 500;
   line-height: 75px;
 }
@@ -45,33 +49,56 @@ li {
   font-size: 25px;
 }
 
-.detailNav {
-  width: 80%;
-  margin: 50px 20px 40px 100px;
-  font-size: 18px;
+.detail-cardImg {
+  width: 400px;
+  height: 400px;
+  margin: 50px 0 0 50px;
 }
 
-.detailContent {
-  width: 80%;
-  font-size: 18px;
-  margin: 10px 0 200px 100px;
+.detail-info {
+  padding: 20px;
 }
 
 .recently-container {
   margin-top: 50px;
+  margin-left: 25px;
+  padding-right: 0;
+  margin-right: 0;
+}
+
+.recently-container h5 {
+  font-size: 15px;
 }
 
 .recentView-image {
-  width: 130px;
-  height: 130px;
+  width: 120px;
+  height: 120px;
   margin-top: 5px;
   cursor: pointer;
 }
 
-.detail-cardImg {
-  width: 450px;
-  height: 400px;
-  margin: 50px 0 0 80px;
+.detailTab {
+  width: 90%;
+  margin: 50px 20px 30px 50px;
+  font-size: 18px;
+}
+
+.tabContent {
+  width: 90%;
+  font-size: 18px;
+  margin: 5px 0px 50px 50px;
+}
+
+.table {
+  font-size: 17px;
+}
+
+.productName {
+  width: 40%;
+}
+
+.cart-productName {
+  font-size: 24px;
 }
 
 .cartImg {
@@ -100,4 +127,86 @@ li {
   justify-content: end;
   margin-top: 50px;
   margin-right: 100px;
+}
+
+/* media query part */
+
+@media only screen and (max-width: 768px) {
+  .bg-text {
+    font-size: 40px;
+    line-height: 40px;
+    position: absolute;
+    top: 300px;
+    left: 50px;
+  }
+
+  .main-card {
+    width: 350px;
+    height: 350px;
+  }
+
+  .ad-bar {
+    font-size: 20px;
+  }
+
+  .detailTab {
+    width: 80%;
+    margin: 30px;
+    font-size: 18px;
+  }
+
+  .tabContent {
+    width: 80%;
+    font-size: 18px;
+    margin: 0px 30px 100px 30px;
+  }
+
+  .detail-cardImg {
+    width: 330px;
+    height: 330px;
+    margin-left: 20px;
+  }
+
+  .detail-info {
+    margin-left: 30px;
+    padding-right: 100px;
+  }
+
+  .recently-container {
+    margin-left: 30px;
+  }
+
+  .recently-container h5 {
+    padding-left: 16px;
+  }
+
+  .total span {
+    font-size: 22px;
+  }
+
+  .order-button {
+    font-size: 13px;
+  }
+
+  .table {
+    font-size: 13px;
+  }
+
+  .productName {
+    width: 20%;
+  }
+
+  .cart-productName {
+    font-size: 18px;
+  }
+
+  .cartImg {
+    width: 100px;
+    height: 100px;
+    margin: 0px;
+  }
+
+  .countBtn {
+    margin-bottom: 5px;
+  }
 }

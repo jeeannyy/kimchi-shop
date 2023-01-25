@@ -18,8 +18,6 @@ function Detail(props) {
   });
   const [recentView, setRecentView] = useState([]);
 
-  // button 누르면 일어나는 function 만들기
-
   const [cartItems, setCartItems] = useState([]);
 
   function cartStorage() {
@@ -79,7 +77,7 @@ function Detail(props) {
       ) : null}
       <div className="container">
         <div className="row">
-          <div className="col-lg-6 col-md-7">
+          <div className="col">
             <img
               src={`https://github.com/jeeannyy/kimchi-shop/blob/main/public/img/kimchi${findItem.id}.png?raw=true`}
               className="detail-cardImg"
@@ -87,7 +85,7 @@ function Detail(props) {
             />
           </div>
 
-          <div className="col-lg-4 col-md-3">
+          <div className="col detail-info">
             <h4 style={{ fontSize: "30px" }} className="pt-5">
               {findItem.title}
             </h4>
@@ -112,33 +110,25 @@ function Detail(props) {
             </button>
           </div>
 
-          <div className="col-lg-2 col-md-10 recently-container">
-            <h5
-              style={{
-                paddingLeft: 16,
-              }}
-            >
-              RECENTLY VIEWED
-            </h5>
+          <div className="col recently-container">
+            <span>RECENTLY VIEWED</span>
 
-            <ul>
-              {recentView.map((recent) => {
-                return (
-                  <Link to={`/detail/${recent.id}`}>
-                    <li>
-                      <img
-                        src={`https://github.com/jeeannyy/kimchi-shop/blob/main/public/img/kimchi${recent.id}.png?raw=true`}
-                        className="recentView-image"
-                        alt="recently viewed kimchi image"
-                      />
-                    </li>
-                  </Link>
-                );
-              })}
-            </ul>
+            {recentView.map((recent) => {
+              return (
+                <Link to={`/detail/${recent.id}`}>
+                  <li>
+                    <img
+                      src={`https://github.com/jeeannyy/kimchi-shop/blob/main/public/img/kimchi${recent.id}.png?raw=true`}
+                      className="recentView-image"
+                      alt="recently viewed kimchi image"
+                    />
+                  </li>
+                </Link>
+              );
+            })}
           </div>
 
-          <Nav variant="tabs" defaultActiveKey="link0" className="detailNav">
+          <Nav variant="tabs" defaultActiveKey="link0" className="detailTab">
             <Nav.Item>
               <Nav.Link
                 eventKey="link0"
@@ -181,7 +171,7 @@ function Detail(props) {
             </Nav.Item>
           </Nav>
 
-          <div className="detailContent">
+          <div className="tabContent">
             {tab === 0 ? (
               <div>
                 In the refrigerator, it stays fresh much longer(about 3~6
